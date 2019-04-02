@@ -81,6 +81,9 @@ a采用volatile修饰有必要，a=new Singleton（）；实际分三步执行�
   volatile轻量级性能好，只能修饰变量。syn只能方法和代码块。多线程访问volatile不会阻塞。volatile保证数据可见性，但不保证数据的原子性，syn两者都保证。<br>
   ## 线程池<br>
   线程池提供一种限制和资源管理（包括执行一个任务），每个线程池还维护一些基本统计信息，例如已完成任务的数量。降低资源消耗：通过复制利用已创建的线程降低创建和销毁线程的消耗；提高响应速度：当任务到达时，任务可以不需要等到线程创建就能立刻执行；提高线程的可管理性：统一管理分配，调优监控。<br>
- 
+  TODO
+  ## Atomic原子类<br>
+    AtomicInteger类主要利用CAS(compare and swap)+volatile和 native方法来保证原子操作，从而避免synchronized的高开销，执行效率大为提升。CAS的原理是拿期望值和
+    原本值做比较，如果相同则更新为新值。Unsafe类的objectFieldOffset()方法是一个本地方法，这个方法是用来拿到“原本的值”的内存地址，返回值是valueOffset，另外value是一个volatile变量，内存中可见，因此jvm可以保证任何时刻任何线程都能拿到该变量的最新值。
   
  
